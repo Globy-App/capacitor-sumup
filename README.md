@@ -9,15 +9,31 @@ npm install capacitor-sumup
 npx cap sync
 ```
 
+## Compatibility of this plugin
+### Android
+The complete function set of this plugin is implemented on Android. This is the reference implementation.
+
+### Web
+Sumup does not provide a way to integrate the SDK on web. The SumUp Payment Switch API does exist but cannot be integrated as nicely as the native SDK's.
+
+### IOS
+Not implemented yet.
+
+## Requirements
+### Android
+Add the SumUp sdk as a dependency to your app's build.gradle. See [SumUp Android SDK documentation](https://github.com/sumup/sumup-android-sdk) for more details on what to add.
+
 ## API
 
 <docgen-index>
 
 * [`login(...)`](#login)
+* [`logout()`](#logout)
 * [`makePayment(...)`](#makepayment)
 * [`prepareForCheckout()`](#prepareforcheckout)
 * [`openCardReaderPage()`](#opencardreaderpage)
 * [Interfaces](#interfaces)
+* [Type Aliases](#type-aliases)
 * [Enums](#enums)
 
 </docgen-index>
@@ -28,14 +44,23 @@ npx cap sync
 ### login(...)
 
 ```typescript
-login(options: LoginOptions) => Promise<LoginResponse>
+login(options: LoginOptions) => Promise<SumupResponse>
 ```
 
 | Param         | Type                                                  |
 | ------------- | ----------------------------------------------------- |
 | **`options`** | <code><a href="#loginoptions">LoginOptions</a></code> |
 
-**Returns:** <code>Promise&lt;<a href="#loginresponse">LoginResponse</a>&gt;</code>
+**Returns:** <code>Promise&lt;<a href="#sumupresponse">SumupResponse</a>&gt;</code>
+
+--------------------
+
+
+### logout()
+
+```typescript
+logout() => Promise<void>
+```
 
 --------------------
 
@@ -76,11 +101,20 @@ openCardReaderPage() => Promise<void>
 ### Interfaces
 
 
-#### LoginResponse
+#### SuccesSumupResponse
 
-| Prop               | Type                |
-| ------------------ | ------------------- |
-| **`affiliateKey`** | <code>string</code> |
+| Prop             | Type                                                            |
+| ---------------- | --------------------------------------------------------------- |
+| **`ResultCode`** | <code><a href="#successresultcode">SuccessResultCode</a></code> |
+| **`Message`**    | <code>string</code>                                             |
+
+
+#### ErrorSumupResponse
+
+| Prop             | Type                                                        |
+| ---------------- | ----------------------------------------------------------- |
+| **`ResultCode`** | <code><a href="#errorresultcode">ErrorResultCode</a></code> |
+| **`Message`**    | <code>string</code>                                         |
 
 
 #### LoginOptions
@@ -91,15 +125,15 @@ openCardReaderPage() => Promise<void>
 | **`accessToken`**  | <code>string</code> |
 
 
-#### CheckoutResponse
+#### SuccessCheckoutResponse
 
-| Prop                   | Type                                                        |
-| ---------------------- | ----------------------------------------------------------- |
-| **`ResultCode`**       | <code><a href="#resultcode">ResultCode</a></code>           |
-| **`Message`**          | <code>string</code>                                         |
-| **`TransactionCode`**  | <code>string</code>                                         |
-| **`TransactionInfor`** | <code><a href="#transactioninfo">TransactionInfo</a></code> |
-| **`ReceiptSent`**      | <code>boolean</code>                                        |
+| Prop                   | Type                                                            |
+| ---------------------- | --------------------------------------------------------------- |
+| **`ResultCode`**       | <code><a href="#successresultcode">SuccessResultCode</a></code> |
+| **`Message`**          | <code>string</code>                                             |
+| **`TransactionCode`**  | <code>string</code>                                             |
+| **`TransactionInfor`** | <code><a href="#transactioninfo">TransactionInfo</a></code>     |
+| **`ReceiptSent`**      | <code>boolean</code>                                            |
 
 
 #### TransactionInfo
@@ -135,14 +169,33 @@ openCardReaderPage() => Promise<void>
 | **`skipFailedScreen`**     | <code>boolean</code>                          |
 
 
+### Type Aliases
+
+
+#### SumupResponse
+
+<code><a href="#successumupresponse">SuccesSumupResponse</a> | <a href="#errorsumupresponse">ErrorSumupResponse</a></code>
+
+
+#### CheckoutResponse
+
+<code><a href="#successcheckoutresponse">SuccessCheckoutResponse</a> | <a href="#errorsumupresponse">ErrorSumupResponse</a></code>
+
+
 ### Enums
 
 
-#### ResultCode
+#### SuccessResultCode
+
+| Members          | Value          |
+| ---------------- | -------------- |
+| **`SUCCESSFUL`** | <code>1</code> |
+
+
+#### ErrorResultCode
 
 | Members                             | Value           |
 | ----------------------------------- | --------------- |
-| **`SUCCESSFUL`**                    | <code>1</code>  |
 | **`ERROR_TRANSACTION_FAILED`**      | <code>2</code>  |
 | **`ERROR_GEOLOCATION_REQUIRED`**    | <code>3</code>  |
 | **`ERROR_INVALID_PARAM`**           | <code>4</code>  |

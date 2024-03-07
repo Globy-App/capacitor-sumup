@@ -3,9 +3,17 @@ export interface LoginOptions {
   accessToken: string,
 }
 
-export interface LoginResponse {
-  affiliateKey: string
+export interface SuccesSumupResponse {
+  ResultCode: SuccessResultCode,
+  Message: string
 }
+
+export interface ErrorSumupResponse {
+  ResultCode: ErrorResultCode,
+  Message: string
+}
+
+export type SumupResponse = SuccesSumupResponse | ErrorSumupResponse
 
 export interface PaymentOptions {
   total: number,
@@ -21,12 +29,12 @@ export interface PaymentOptions {
   skipFailedScreen?: boolean,
 }
 
+// TODO: Expand this to all avaialble currencies
 export enum Currency {
   EUR = "EUR"
 }
 
-export enum ResultCode {
-  SUCCESSFUL =  1,
+export enum ErrorResultCode {
   ERROR_TRANSACTION_FAILED = 2,
   ERROR_GEOLOCATION_REQUIRED = 3,
   ERROR_INVALID_PARAM = 4,
@@ -40,6 +48,12 @@ export enum ResultCode {
   ERROR_INVALID_AMOUNT_DECIMALS = 12,
   ERROR_API_LEVEL_TOO_LOW = 13,
 }
+
+export enum SuccessResultCode {
+  SUCCESSFUL =  1,
+}
+
+export type ResultCode = SuccessResultCode | ErrorResultCode; 
 
 export enum PaymentStatus {
   PENDING = "PENDING",
@@ -61,16 +75,18 @@ export interface TransactionInfo {
   CardType: string,
 }
 
-export interface CheckoutResponse {
-  ResultCode: ResultCode
+export interface SuccessCheckoutResponse {
+  ResultCode: SuccessResultCode
   Message: string,
   TransactionCode: string,
   TransactionInfor: TransactionInfo,
   ReceiptSent: boolean
 }
 
+export type CheckoutResponse = SuccessCheckoutResponse | ErrorSumupResponse;
+
 export interface SumupPlugin {
-  login(options: LoginOptions): Promise<LoginResponse>;
+  login(options: LoginOptions): Promise<SumupResponse>;
   logout(): Promise<void>;
   makePayment(options: PaymentOptions): Promise<CheckoutResponse>;
   prepareForCheckout(): Promise<void>;

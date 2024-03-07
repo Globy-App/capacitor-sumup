@@ -4,8 +4,15 @@ import android.util.Log;
 
 public class Sumup {
 
-    public String echo(String value) {
-        Log.i("Echo", value);
-        return value;
+    public void login(String AffiliateKey) {
+
+    }
+
+    public void logout() {
+
+    }
+
+    public void makePayment() {
+        
     }
 }
