@@ -146,14 +146,11 @@ openCardReaderPage() => Promise<SumupResponse>
 | **`TransactionCode`**      | <code>string</code>                                     |
 | **`MerchantCode`**         | <code>string</code>                                     |
 | **`Amount`**               | <code>number</code>                                     |
-| **`Tip`**                  | <code>number</code>                                     |
-| **`VAT`**                  | <code>number</code>                                     |
 | **`ForeignTransactionId`** | <code>string</code>                                     |
 | **`Currency`**             | <code><a href="#currency">Currency</a></code>           |
 | **`PaymentStatus`**        | <code><a href="#paymentstatus">PaymentStatus</a></code> |
 | **`PaymentType`**          | <code><a href="#paymenttype">PaymentType</a></code>     |
 | **`EntryMode`**            | <code>string</code>                                     |
-| **`Installments`**         | <code>number</code>                                     |
 | **`CardType`**             | <code>string</code>                                     |
 
 

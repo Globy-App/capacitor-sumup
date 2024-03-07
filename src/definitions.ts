@@ -88,14 +88,11 @@ export interface TransactionInfo {
   TransactionCode: string,
   MerchantCode: string,
   Amount: number,
-  Tip: number,
-  VAT: number,
   ForeignTransactionId: string,
   Currency: Currency,
   PaymentStatus: PaymentStatus,
   PaymentType: PaymentType,
   EntryMode: string, 
-  Installments: number,
   CardType: string,
 }
 

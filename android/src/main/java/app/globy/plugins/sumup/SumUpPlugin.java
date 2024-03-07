@@ -199,13 +199,10 @@ public class SumUpPlugin extends Plugin {
             JsTxInfo.put("TransactionCode", TxInfo.getTransactionCode());
             JsTxInfo.put("MerchantCode", TxInfo.getMerchantCode());
             JsTxInfo.put("Amount", TxInfo.getAmount());
-            JsTxInfo.put("Tip", TxInfo.getTipAmount());
-            JsTxInfo.put("VAT", TxInfo.getVatAmount());
             JsTxInfo.put("Currency", TxInfo.getCurrency());
             JsTxInfo.put("PaymentStatus", TxInfo.getStatus());
             JsTxInfo.put("PaymentType", TxInfo.getPaymentType());
             JsTxInfo.put("EntryMode", TxInfo.getEntryMode());
-            JsTxInfo.put("Installments", TxInfo.getInstallments());
             JsTxInfo.put("CardType", TxInfo.getCard().getType());
             JsTxInfo.put("ForeignTransactionId", TxInfo.getForeignTransactionId());
         }
