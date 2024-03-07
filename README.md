@@ -10,6 +10,8 @@ npx cap sync
 ```
 
 ## Compatibility of this plugin
+The aim of this plugin is to be as close to the Native SDK's as possible. This means that the returned result code and message is chosen by the SDK and the SDK probably has the correct documentation on how to interpret the code / message.
+
 ### Android
 The complete function set of this plugin is implemented on Android. This is the reference implementation.
 
@@ -122,7 +124,6 @@ openCardReaderPage() => Promise<void>
 | Prop               | Type                |
 | ------------------ | ------------------- |
 | **`affiliatekey`** | <code>string</code> |
-| **`accessToken`**  | <code>string</code> |
 
 
 #### SuccessCheckoutResponse

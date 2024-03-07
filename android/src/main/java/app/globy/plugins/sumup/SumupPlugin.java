@@ -1,30 +1,46 @@
 package app.globy.plugins.sumup;
 
-import com.getcapacitor.ActivityCallback;
+import android.content.Intent;
+import android.os.Bundle;
+
+import androidx.activity.result.ActivityResult;
+
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
+import com.getcapacitor.annotation.ActivityCallback;
 import com.getcapacitor.annotation.CapacitorPlugin;
+import com.sumup.merchant.reader.api.SumUpAPI;
+import com.sumup.merchant.reader.api.SumUpState;
 
-@CapacitorPlugin(name = "Sumup")
+@CapacitorPlugin(name = "SumUp")
 public class SumupPlugin extends Plugin {
-
-    private Sumup implementation = new Sumup();
 
     @Override
     public void load() {
-        SumupState.init(this);
+        SumUpState.init(this.getContext());
     }
 
     @PluginMethod
     public void login(PluginCall call) {
         // Get the affiliateKey from the options
+        String key = call.getData().getString("affiliatekey");
 
-        SumupLogin sumupLogin = SumUpLogin.builder()
+        if (key == null) {
+            throw new IllegalArgumentException("affiliatekey is not set");
+        }
+
+
+        // DEV NOTE: The SumupLogin Builder is not used as we can't get the intent from it later.
+        //  We require this intent to get the result and give it back to capacitor.
+        Intent LoginIntent = new Intent();
+        LoginIntent.putExtra("affiliate-key", key);
+
+        startActivityForResult(call, LoginIntent, "handleAuthResponse");
     }
 
-    @PluginMethod(returntype = PluginMethod.RETURN_NONE)
+    @PluginMethod(returnType = PluginMethod.RETURN_NONE)
     public void logout(PluginCall call) {
         call.unimplemented("Not implemented on Android.");
     }
@@ -33,6 +49,30 @@ public class SumupPlugin extends Plugin {
     public void handleAuthResponse(PluginCall call, ActivityResult result) {
         if (call == null) {
             return;
+        }
+
+        Intent data = result.getData();
+        if (data == null) {
+            return;
+        }
+
+        Bundle extras = data.getExtras();
+        if (extras == null) {
+            return;
+        }
+
+        int resultCode = extras.getInt(SumUpAPI.Response.RESULT_CODE);
+        String resultMessage = extras.getString(SumUpAPI.Response.MESSAGE);
+
+        // Sumup has handled the call successfully if the resultcode is positive
+        if (resultCode > 0) {
+            JSObject res = new JSObject();
+            res.put("ResultCode", resultCode);
+            res.put("Message", resultMessage);
+
+            call.resolve(res);
+        } else {
+            call.reject(resultMessage, String.valueOf(resultCode));
         }
     }
 
@@ -48,7 +88,7 @@ public class SumupPlugin extends Plugin {
         }
     }
 
-    @PluginMethod(returntype = PluginMethod.RETURN_NONE)
+    @PluginMethod(returnType = PluginMethod.RETURN_NONE)
     public void prepareForCheckout(PluginCall call) {
         call.unimplemented("Not implemented on Android.");
     }

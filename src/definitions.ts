@@ -1,6 +1,5 @@
 export interface LoginOptions {
   affiliatekey: string,
-  accessToken: string,
 }
 
 export interface SuccesSumupResponse {
