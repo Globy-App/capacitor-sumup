@@ -28,23 +28,23 @@ export interface PaymentOptions {
 
 // TODO: Expand this to all avaialble currencies
 export enum Currency {
-  BGN,
-  BRL,
-  CHF,
-  CLP,
-  COP,
-  CZK,
-  DKK,
-  EUR,
-  GBP,
-  HRK,
-  HUF,
-  NOK,
-  PEN,
-  PLN,
-  RON,
-  SEK,
-  USD
+  BGN = "BGN",
+  BRL = "BRL",
+  CHF = "CHF",
+  CLP = "CLP",
+  COP = "COP",
+  CZK = "CZK",
+  DKK = "DKK",
+  EUR = "EUR",
+  GBP = "GBP",
+  HRK = "HRK",
+  HUF = "HUF",
+  NOK = "NOK",
+  PEN = "PEN",
+  PLN = "PLN",
+  RON = "RON",
+  SEK = "SEK",
+  USD = "USD",
 }
 
 export enum ErrorResultCode {

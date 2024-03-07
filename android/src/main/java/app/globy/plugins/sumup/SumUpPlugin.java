@@ -22,7 +22,6 @@ import com.sumup.merchant.reader.ui.activities.CardReaderPaymentAPIDrivenPageAct
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Objects;
 import java.util.UUID;
 
 @CapacitorPlugin(name = "SumUp")
