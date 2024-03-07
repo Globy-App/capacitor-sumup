@@ -215,25 +215,25 @@ openCardReaderPage() => Promise<SumupResponse>
 
 #### Currency
 
-| Members   |
-| --------- |
-| **`BGN`** |
-| **`BRL`** |
-| **`CHF`** |
-| **`CLP`** |
-| **`COP`** |
-| **`CZK`** |
-| **`DKK`** |
-| **`EUR`** |
-| **`GBP`** |
-| **`HRK`** |
-| **`HUF`** |
-| **`NOK`** |
-| **`PEN`** |
-| **`PLN`** |
-| **`RON`** |
-| **`SEK`** |
-| **`USD`** |
+| Members   | Value              |
+| --------- | ------------------ |
+| **`BGN`** | <code>"BGN"</code> |
+| **`BRL`** | <code>"BRL"</code> |
+| **`CHF`** | <code>"CHF"</code> |
+| **`CLP`** | <code>"CLP"</code> |
+| **`COP`** | <code>"COP"</code> |
+| **`CZK`** | <code>"CZK"</code> |
+| **`DKK`** | <code>"DKK"</code> |
+| **`EUR`** | <code>"EUR"</code> |
+| **`GBP`** | <code>"GBP"</code> |
+| **`HRK`** | <code>"HRK"</code> |
+| **`HUF`** | <code>"HUF"</code> |
+| **`NOK`** | <code>"NOK"</code> |
+| **`PEN`** | <code>"PEN"</code> |
+| **`PLN`** | <code>"PLN"</code> |
+| **`RON`** | <code>"RON"</code> |
+| **`SEK`** | <code>"SEK"</code> |
+| **`USD`** | <code>"USD"</code> |
 
 
 #### PaymentStatus

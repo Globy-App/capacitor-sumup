@@ -26,7 +26,6 @@ export interface PaymentOptions {
   skipFailedScreen?: boolean,
 }
 
-// TODO: Expand this to all avaialble currencies
 export enum Currency {
   BGN = "BGN",
   BRL = "BRL",
