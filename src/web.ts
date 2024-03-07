@@ -18,7 +18,7 @@ export class SumupWeb extends WebPlugin implements SumupPlugin {
   prepareForCheckout(): Promise<void> {
     throw this.unimplemented('Not implemented on web.');
   }
-  openCardReaderPage(): Promise<void> {
+  openCardReaderPage(): Promise<SumupResponse> {
     throw this.unimplemented('Not implemented on web.');
   }
 }

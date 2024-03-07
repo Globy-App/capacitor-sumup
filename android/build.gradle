@@ -61,4 +61,8 @@ dependencies {
 
     // Add sumup SDK dependency
     implementation 'com.sumup:merchant-sdk:4.3.0'
+
+    // Add dependency on Google Location Services for improvements of location accuracy and reducing
+    //  the power consumption
+    implementation "com.google.android.gms:play-services-location:19.0.1"
 }

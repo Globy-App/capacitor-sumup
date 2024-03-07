@@ -17,8 +17,6 @@ export type SumupResponse = SuccesSumupResponse | ErrorSumupResponse
 export interface PaymentOptions {
   total: number,
   currency: Currency,
-  enableTipping?: boolean,
-  tip?: number,
   title?: string,
   receiptEmail?: string,
   receiptSMS?: string,
@@ -30,7 +28,23 @@ export interface PaymentOptions {
 
 // TODO: Expand this to all avaialble currencies
 export enum Currency {
-  EUR = "EUR"
+  BGN,
+  BRL,
+  CHF,
+  CLP,
+  COP,
+  CZK,
+  DKK,
+  EUR,
+  GBP,
+  HRK,
+  HUF,
+  NOK,
+  PEN,
+  PLN,
+  RON,
+  SEK,
+  USD
 }
 
 export enum ErrorResultCode {
@@ -61,15 +75,27 @@ export enum PaymentStatus {
   FAILED = "FAILED",
 }
 
+export enum PaymentType {
+  CASH = "CASH",
+  POS = "POS",
+  ECOM = "ECOM",
+  UNKNOWN = "UNKNOWN",
+  RECURRING = "RECURRING",
+  BITCOIN = "BITCOIN",
+  BALANCE = "BALANCE"
+}
+
 export interface TransactionInfo {
   TransactionCode: string,
   MerchantCode: string,
   Amount: number,
   Tip: number,
   VAT: number,
+  ForeignTransactionId: string,
   Currency: Currency,
   PaymentStatus: PaymentStatus,
-  EntryMode: string,
+  PaymentType: PaymentType,
+  EntryMode: string, 
   Installments: number,
   CardType: string,
 }
@@ -78,7 +104,7 @@ export interface SuccessCheckoutResponse {
   ResultCode: SuccessResultCode
   Message: string,
   TransactionCode: string,
-  TransactionInfor: TransactionInfo,
+  TransactionInfo: TransactionInfo,
   ReceiptSent: boolean
 }
 
@@ -89,5 +115,5 @@ export interface SumupPlugin {
   logout(): Promise<void>;
   makePayment(options: PaymentOptions): Promise<CheckoutResponse>;
   prepareForCheckout(): Promise<void>;
-  openCardReaderPage(): Promise<void>;
+  openCardReaderPage(): Promise<SumupResponse>;
 }

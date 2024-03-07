@@ -94,8 +94,10 @@ prepareForCheckout() => Promise<void>
 ### openCardReaderPage()
 
 ```typescript
-openCardReaderPage() => Promise<void>
+openCardReaderPage() => Promise<SumupResponse>
 ```
+
+**Returns:** <code>Promise&lt;<a href="#sumupresponse">SumupResponse</a>&gt;</code>
 
 --------------------
 
@@ -128,29 +130,31 @@ openCardReaderPage() => Promise<void>
 
 #### SuccessCheckoutResponse
 
-| Prop                   | Type                                                            |
-| ---------------------- | --------------------------------------------------------------- |
-| **`ResultCode`**       | <code><a href="#successresultcode">SuccessResultCode</a></code> |
-| **`Message`**          | <code>string</code>                                             |
-| **`TransactionCode`**  | <code>string</code>                                             |
-| **`TransactionInfor`** | <code><a href="#transactioninfo">TransactionInfo</a></code>     |
-| **`ReceiptSent`**      | <code>boolean</code>                                            |
+| Prop                  | Type                                                            |
+| --------------------- | --------------------------------------------------------------- |
+| **`ResultCode`**      | <code><a href="#successresultcode">SuccessResultCode</a></code> |
+| **`Message`**         | <code>string</code>                                             |
+| **`TransactionCode`** | <code>string</code>                                             |
+| **`TransactionInfo`** | <code><a href="#transactioninfo">TransactionInfo</a></code>     |
+| **`ReceiptSent`**     | <code>boolean</code>                                            |
 
 
 #### TransactionInfo
 
-| Prop                  | Type                                                    |
-| --------------------- | ------------------------------------------------------- |
-| **`TransactionCode`** | <code>string</code>                                     |
-| **`MerchantCode`**    | <code>string</code>                                     |
-| **`Amount`**          | <code>number</code>                                     |
-| **`Tip`**             | <code>number</code>                                     |
-| **`VAT`**             | <code>number</code>                                     |
-| **`Currency`**        | <code><a href="#currency">Currency</a></code>           |
-| **`PaymentStatus`**   | <code><a href="#paymentstatus">PaymentStatus</a></code> |
-| **`EntryMode`**       | <code>string</code>                                     |
-| **`Installments`**    | <code>number</code>                                     |
-| **`CardType`**        | <code>string</code>                                     |
+| Prop                       | Type                                                    |
+| -------------------------- | ------------------------------------------------------- |
+| **`TransactionCode`**      | <code>string</code>                                     |
+| **`MerchantCode`**         | <code>string</code>                                     |
+| **`Amount`**               | <code>number</code>                                     |
+| **`Tip`**                  | <code>number</code>                                     |
+| **`VAT`**                  | <code>number</code>                                     |
+| **`ForeignTransactionId`** | <code>string</code>                                     |
+| **`Currency`**             | <code><a href="#currency">Currency</a></code>           |
+| **`PaymentStatus`**        | <code><a href="#paymentstatus">PaymentStatus</a></code> |
+| **`PaymentType`**          | <code><a href="#paymenttype">PaymentType</a></code>     |
+| **`EntryMode`**            | <code>string</code>                                     |
+| **`Installments`**         | <code>number</code>                                     |
+| **`CardType`**             | <code>string</code>                                     |
 
 
 #### PaymentOptions
@@ -159,8 +163,6 @@ openCardReaderPage() => Promise<void>
 | -------------------------- | --------------------------------------------- |
 | **`total`**                | <code>number</code>                           |
 | **`currency`**             | <code><a href="#currency">Currency</a></code> |
-| **`enableTipping`**        | <code>boolean</code>                          |
-| **`tip`**                  | <code>number</code>                           |
 | **`title`**                | <code>string</code>                           |
 | **`receiptEmail`**         | <code>string</code>                           |
 | **`receiptSMS`**           | <code>string</code>                           |
@@ -213,9 +215,25 @@ openCardReaderPage() => Promise<void>
 
 #### Currency
 
-| Members   | Value              |
-| --------- | ------------------ |
-| **`EUR`** | <code>"EUR"</code> |
+| Members   |
+| --------- |
+| **`BGN`** |
+| **`BRL`** |
+| **`CHF`** |
+| **`CLP`** |
+| **`COP`** |
+| **`CZK`** |
+| **`DKK`** |
+| **`EUR`** |
+| **`GBP`** |
+| **`HRK`** |
+| **`HUF`** |
+| **`NOK`** |
+| **`PEN`** |
+| **`PLN`** |
+| **`RON`** |
+| **`SEK`** |
+| **`USD`** |
 
 
 #### PaymentStatus
@@ -226,5 +244,18 @@ openCardReaderPage() => Promise<void>
 | **`SUCCESSFUL`** | <code>"SUCCESSFUL"</code> |
 | **`CANCELLED`**  | <code>"CANCELLED"</code>  |
 | **`FAILED`**     | <code>"FAILED"</code>     |
+
+
+#### PaymentType
+
+| Members         | Value                    |
+| --------------- | ------------------------ |
+| **`CASH`**      | <code>"CASH"</code>      |
+| **`POS`**       | <code>"POS"</code>       |
+| **`ECOM`**      | <code>"ECOM"</code>      |
+| **`UNKNOWN`**   | <code>"UNKNOWN"</code>   |
+| **`RECURRING`** | <code>"RECURRING"</code> |
+| **`BITCOIN`**   | <code>"BITCOIN"</code>   |
+| **`BALANCE`**   | <code>"BALANCE"</code>   |
 
 </docgen-api>
