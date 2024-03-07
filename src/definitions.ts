@@ -107,9 +107,28 @@ export interface SuccessCheckoutResponse {
 export type CheckoutResponse = SuccessCheckoutResponse | ErrorSumupResponse;
 
 export interface SumupPlugin {
+  /**
+   * Logout the user
+   * 
+   * @param options Options to use when loggin in. Must contain an affiliate key matching the bundle identifier of the application.
+   */
   login(options: LoginOptions): Promise<SumupResponse>;
+  /**
+   * Logout the user
+   */
   logout(): Promise<void>;
+  /**
+   * Trigger a payment. SumUp will open a window that helps the user letting the customer pay.
+   * 
+   * @param options Options of the payment
+   */
   makePayment(options: PaymentOptions): Promise<CheckoutResponse>;
+  /**
+   * Opens a page to configure a SumUp card reader on the device.
+   */
+  openCardReaderPage(): Promise<void>;
+  /**
+   * NOT IMPLEMENTED (yet)
+   */
   prepareForCheckout(): Promise<void>;
-  openCardReaderPage(): Promise<SumupResponse>;
 }
