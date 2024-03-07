@@ -32,8 +32,8 @@ Add the SumUp sdk as a dependency to your app's build.gradle. See [SumUp Android
 * [`login(...)`](#login)
 * [`logout()`](#logout)
 * [`makePayment(...)`](#makepayment)
-* [`prepareForCheckout()`](#prepareforcheckout)
 * [`openCardReaderPage()`](#opencardreaderpage)
+* [`prepareForCheckout()`](#prepareforcheckout)
 * [Interfaces](#interfaces)
 * [Type Aliases](#type-aliases)
 * [Enums](#enums)
@@ -49,9 +49,11 @@ Add the SumUp sdk as a dependency to your app's build.gradle. See [SumUp Android
 login(options: LoginOptions) => Promise<SumupResponse>
 ```
 
-| Param         | Type                                                  |
-| ------------- | ----------------------------------------------------- |
-| **`options`** | <code><a href="#loginoptions">LoginOptions</a></code> |
+Logout the user
+
+| Param         | Type                                                  | Description                                                                                                     |
+| ------------- | ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **`options`** | <code><a href="#loginoptions">LoginOptions</a></code> | Options to use when loggin in. Must contain an affiliate key matching the bundle identifier of the application. |
 
 **Returns:** <code>Promise&lt;<a href="#sumupresponse">SumupResponse</a>&gt;</code>
 
@@ -64,6 +66,8 @@ login(options: LoginOptions) => Promise<SumupResponse>
 logout() => Promise<void>
 ```
 
+Logout the user
+
 --------------------
 
 
@@ -73,11 +77,24 @@ logout() => Promise<void>
 makePayment(options: PaymentOptions) => Promise<CheckoutResponse>
 ```
 
-| Param         | Type                                                      |
-| ------------- | --------------------------------------------------------- |
-| **`options`** | <code><a href="#paymentoptions">PaymentOptions</a></code> |
+Trigger a payment. SumUp will open a window that helps the user letting the customer pay.
+
+| Param         | Type                                                      | Description            |
+| ------------- | --------------------------------------------------------- | ---------------------- |
+| **`options`** | <code><a href="#paymentoptions">PaymentOptions</a></code> | Options of the payment |
 
 **Returns:** <code>Promise&lt;<a href="#checkoutresponse">CheckoutResponse</a>&gt;</code>
+
+--------------------
+
+
+### openCardReaderPage()
+
+```typescript
+openCardReaderPage() => Promise<void>
+```
+
+Opens a page to configure a SumUp card reader on the device.
 
 --------------------
 
@@ -88,16 +105,7 @@ makePayment(options: PaymentOptions) => Promise<CheckoutResponse>
 prepareForCheckout() => Promise<void>
 ```
 
---------------------
-
-
-### openCardReaderPage()
-
-```typescript
-openCardReaderPage() => Promise<SumupResponse>
-```
-
-**Returns:** <code>Promise&lt;<a href="#sumupresponse">SumupResponse</a>&gt;</code>
+NOT IMPLEMENTED (yet)
 
 --------------------
 
