@@ -1,8 +1,16 @@
 import Foundation
+import Capacitor
 
-@objc public class SumupPlugin: NSObject {
-    @objc public func echo(_ value: String) -> String {
-        print(value)
-        return value
+/**
+ * Please read the Capacitor iOS Plugin Development Guide
+ * here: https://capacitorjs.com/docs/plugins/ios
+ */
+@objc(SumupPlugin)
+public class SumupPlugin: CAPPlugin {
+    @objc func echo(_ call: CAPPluginCall) {
+        let value = call.getString("value") ?? ""
+        call.resolve([
+            "value": implementation.echo(value)
+        ])
     }
 }
