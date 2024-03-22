@@ -1,6 +1,6 @@
 {
   "name": "capacitor-sumup",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Capacitor plugin to connect capacitor based applications to the native SumUp SDK to take card payments.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
