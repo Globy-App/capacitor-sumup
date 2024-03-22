@@ -16,14 +16,14 @@ The aim of this plugin is to be as close to the Native SDK's as possible. This m
 The complete function set of this plugin is implemented on Android. This is the reference implementation.
 
 ### Web
-Sumup does not provide a way to integrate the SDK on web. The SumUp Payment Switch API does exist but cannot be integrated as nicely as the native SDK's.
+Sumup does not provide a way to integrate the SDK on web. The SumUp Payment Switch API does exist but cannot be integrated as nicely as the native SDK's. The native SDK's allow waiting for the user to return to the application, web application don't support this.
 
 ### IOS
 Not implemented yet.
 
 ## Requirements
 ### Android
-Add the SumUp sdk as a dependency to your app's build.gradle. See [SumUp Android SDK documentation](https://github.com/sumup/sumup-android-sdk) for more details on what to add.
+See [SumUp Android SDK documentation](https://github.com/sumup/sumup-android-sdk) on how to setup your account to accept calls from the SDK.
 
 ## API
 

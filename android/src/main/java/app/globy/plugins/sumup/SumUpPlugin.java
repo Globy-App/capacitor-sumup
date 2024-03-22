@@ -216,7 +216,8 @@ public class SumUpPlugin extends Plugin {
 
     @PluginMethod(returnType = PluginMethod.RETURN_NONE)
     public void prepareForCheckout(PluginCall call) {
-        call.unimplemented("Not implemented on Android.");
+        SumUpAPI.prepareForCheckout();
+        call.resolve();
     }
 
     @PluginMethod
