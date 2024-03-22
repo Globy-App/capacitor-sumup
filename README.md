@@ -22,7 +22,6 @@ Sumup does not provide a way to integrate the SDK on web. The SumUp Payment Swit
 Not implemented yet.
 
 ## Requirements
-### Android
 See [SumUp Android SDK documentation](https://github.com/sumup/sumup-android-sdk) on how to setup your account to accept calls from the SDK.
 
 ## API
