@@ -94,6 +94,7 @@ openCardReaderPage() => Promise<SumupResponse>
 ```
 
 Opens a page to configure a SumUp card reader on the device.
+May never resolve, this is due to SumUp's implementation.
 
 **Returns:** <code>Promise&lt;<a href="#sumupresponse">SumupResponse</a>&gt;</code>
 
