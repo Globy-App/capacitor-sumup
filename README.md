@@ -90,10 +90,12 @@ Trigger a payment. SumUp will open a window that helps the user letting the cust
 ### openCardReaderPage()
 
 ```typescript
-openCardReaderPage() => Promise<void>
+openCardReaderPage() => Promise<SumupResponse>
 ```
 
 Opens a page to configure a SumUp card reader on the device.
+
+**Returns:** <code>Promise&lt;<a href="#sumupresponse">SumupResponse</a>&gt;</code>
 
 --------------------
 
@@ -104,7 +106,7 @@ Opens a page to configure a SumUp card reader on the device.
 prepareForCheckout() => Promise<void>
 ```
 
-NOT IMPLEMENTED (yet)
+Offers the possibility to connect the card reader ahead of initiating the checkout which speeds up the overall checkout time.
 
 --------------------
 

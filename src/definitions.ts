@@ -125,10 +125,11 @@ export interface SumupPlugin {
   makePayment(options: PaymentOptions): Promise<CheckoutResponse>;
   /**
    * Opens a page to configure a SumUp card reader on the device.
+   * May never resolve, this is due to SumUp's implementation.
    */
-  openCardReaderPage(): Promise<void>;
+  openCardReaderPage(): Promise<SumupResponse>;
   /**
-   * NOT IMPLEMENTED (yet)
+   * Offers the possibility to connect the card reader ahead of initiating the checkout which speeds up the overall checkout time.
    */
   prepareForCheckout(): Promise<void>;
 }
